@@ -68,7 +68,7 @@ flutter doctor
 git clone https://github.com/SEU-USUARIO/Byte.git
 
 # 2. Entre na pasta do projeto
-cd SEU-REPOSITORIO
+cd Byte
 
 # 3. Instale as dependências
 flutter pub get
