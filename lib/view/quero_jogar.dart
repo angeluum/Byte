@@ -20,15 +20,6 @@ class _QueroJogarViewState extends State<QueroJogarView> {
     'Earthbound',
   ];
 
-    final List<String> _sub = [
-    '2026',
-    '2026',
-    '2025',
-    '2023',
-    '2018',
-    '1994',
-  ];
-
   @override
   Widget build(BuildContext context) {
     final cores = Theme.of(context).colorScheme;
