@@ -107,7 +107,6 @@ class _CadastroViewState extends State<CadastroView> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    
                     Image.asset(
                       'assets/images/logo.png',
                       height: 80,
@@ -121,9 +120,8 @@ class _CadastroViewState extends State<CadastroView> {
                     Text(
                       'Criar conta',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
                     Text(
@@ -162,7 +160,7 @@ class _CadastroViewState extends State<CadastroView> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Telefone 
+                    // Telefone
                     TextFormField(
                       controller: _telefoneController,
                       keyboardType: TextInputType.phone,
@@ -188,7 +186,9 @@ class _CadastroViewState extends State<CadastroView> {
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
-                          tooltip: _ocultarSenha ? 'Mostrar senha' : 'Ocultar senha',
+                          tooltip: _ocultarSenha
+                              ? 'Mostrar senha'
+                              : 'Ocultar senha',
                           icon: Icon(
                             _ocultarSenha
                                 ? Icons.visibility_outlined
@@ -222,7 +222,8 @@ class _CadastroViewState extends State<CadastroView> {
                                 : Icons.visibility_off_outlined,
                           ),
                           onPressed: () => setState(
-                              () => _ocultarConfirmacao = !_ocultarConfirmacao),
+                            () => _ocultarConfirmacao = !_ocultarConfirmacao,
+                          ),
                         ),
                       ),
                       validator: _validarConfirmacao,

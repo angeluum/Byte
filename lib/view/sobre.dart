@@ -13,7 +13,6 @@ class SobreView extends StatelessWidget {
       'para mais projetos como esse, acesse github.com/angeluum'
       '\n\n\n PS: Santos Futebol Clube, o maior de todos!!!!';
 
-
   static const String _disciplina = 'Programação em dispositivos móveis';
   static const String _instituicao = 'Fatec - Ribeirão Preto';
   static const String _professor = 'Rodrigo de Oliveira Plotze';
@@ -64,9 +63,7 @@ class SobreView extends StatelessWidget {
                   _SecaoCard(
                     icone: Icons.flag_outlined,
                     titulo: 'Objetivo',
-                    filhos: [
-                      Text(_objetivo, style: textos.bodyMedium),
-                    ],
+                    filhos: [Text(_objetivo, style: textos.bodyMedium)],
                   ),
                   const SizedBox(height: 16),
 
@@ -122,9 +119,8 @@ class _SecaoCard extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   titulo,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -155,9 +151,8 @@ class _LinhaInfo extends StatelessWidget {
             width: 96,
             child: Text(
               rotulo,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(

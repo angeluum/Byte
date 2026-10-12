@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/presets.dart';
 import 'package:flutter/material.dart';
+import 'package:p1_dispositivos_moveis/view/home.dart';
 import 'view/login.dart';
 import 'view/cadastro.dart';
 import 'view/esqueceu.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Byte',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: Colors.deepPurple,
+        colorSchemeSeed: const Color.fromRGBO(16, 201, 201, 1),
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
         '/login': (_) => const LoginView(),
         '/cadastro': (_) => const CadastroView(),
         '/esqueceu-senha': (_) => const EsqueceuView(),
-        '/home': (_) => const Scaffold(body: Center(child: Text('Home'))),
         '/sobre': (_) => const SobreView(),
+        '/home': (_) => const HomeView(),
       },
     );
   }

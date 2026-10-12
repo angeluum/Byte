@@ -41,7 +41,6 @@ class _LoginViewState extends State<LoginView> {
 
   void _entrar() {
     if (_formKey.currentState!.validate()) {
-      
       Navigator.pushReplacementNamed(context, '/home');
     }
   }
@@ -76,9 +75,8 @@ class _LoginViewState extends State<LoginView> {
                     Text(
                       'Byte',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
                     Text(
@@ -113,7 +111,9 @@ class _LoginViewState extends State<LoginView> {
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
-                          tooltip: _ocultarSenha ? 'Mostrar senha' : 'Ocultar senha',
+                          tooltip: _ocultarSenha
+                              ? 'Mostrar senha'
+                              : 'Ocultar senha',
                           icon: Icon(
                             _ocultarSenha
                                 ? Icons.visibility_outlined
@@ -165,7 +165,7 @@ class _LoginViewState extends State<LoginView> {
                       onPressed: () => Navigator.pushNamed(context, '/sobre'),
                       icon: const Icon(Icons.info_outline),
                       label: const Text('Sobre o Byte'),
-                  ),
+                    ),
                   ],
                 ),
               ),
