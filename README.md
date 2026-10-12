@@ -1,14 +1,9 @@
 <div align="center">
 
-# 🎮 Byte
+<img width="396" height="195" alt="Image" src="https://github.com/user-attachments/assets/6014d6df-c0b3-43e2-9a48-1c72e1c4ee14" />
 
 **A rede social para quem joga.**
 Registre o que você jogou, dê notas, escreva análises e compartilhe sua opinião com outros jogadores.
-
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![Material Design](https://img.shields.io/badge/Material_Design_3-757575?style=for-the-badge&logo=materialdesign&logoColor=white)
-![Status](https://img.shields.io/badge/status-em_desenvolvimento-yellow?style=for-the-badge)
 
 </div>
 
@@ -41,7 +36,7 @@ Este projeto foi desenvolvido como trabalho prático da disciplina de Flutter, n
 
 | Login | Cadastro | Esqueceu a senha | Sobre |
 | :---: | :---: | :---: | :---: |
-| ![Login](docs/screenshots/login.png) | ![Cadastro](docs/screenshots/cadastro.png) | ![Esqueceu a senha](docs/screenshots/esqueceu.png) | ![Sobre](docs/screenshots/sobre.png) |
+| <img width="532" height="937" alt="Image" src="https://github.com/user-attachments/assets/dceead4a-902f-419e-961e-422a8d3ad8af" /> |<img width="508" height="904" alt="Image" src="https://github.com/user-attachments/assets/cb8f95db-310d-40ef-876f-2b6522e4f1d6" />| <img width="573" height="920" alt="Image" src="https://github.com/user-attachments/assets/773542dd-1aa2-4abf-a880-83892983fb3f" /> | <img width="537" height="919" alt="Image" src="https://github.com/user-attachments/assets/18f467ea-b3c8-477e-9f5f-9617ddfc98a0" /> |
 
 ## 🛠️ Tecnologias
 
@@ -89,7 +84,7 @@ Login ──► Cadastro ──► Home
 
 ## 👥 Equipe
 
-|Ângelo Avezum Marques da Silva | [@angeluum](https://github.com/angeluum) |
+|Ângelo Avezum Marques da Silva | GitHub: [@angeluum](https://github.com/angeluum) | 
 
 ## 🎥 Vídeo de apresentação
 
@@ -106,7 +101,7 @@ Fazer um vídeo !!!!
 
 <div align="center">
 
-Feito com 💜 e Flutter
+Feito com 💜 e Flutter.
 Santos Futebol Clube!!!
 
 </div>
