@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../controller/auth_controller.dart';
+
+final _auth = AuthController();
+
 class EsqueceuView extends StatefulWidget {
   const EsqueceuView({super.key});
 
@@ -16,6 +20,7 @@ class _EsqueceuViewState extends State<EsqueceuView> {
   @override
   void dispose() {
     _emailController.dispose();
+    _auth.dispose();
     super.dispose();
   }
 
@@ -29,20 +34,21 @@ class _EsqueceuViewState extends State<EsqueceuView> {
     return null;
   }
 
-  void _solicitarRecuperacao() {
-    if (_formKey.currentState!.validate()) {
-      // TODO: chamar o controller (ChangeNotifier) para verificar se o e-mail
-      // está associado a uma conta cadastrada e iniciar a recuperação.
-      // Se não existir conta, exibir uma mensagem de erro apropriada.
-      final email = _emailController.text.trim();
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Enviamos as instruções de redefinição para $email.'),
+  Future<void> _solicitarRecuperacao() async {
+    if (!_formKey.currentState!.validate()) return;
+    final email = _emailController.text.trim();
+    final ok = await _auth.recuperarSenha(email);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          ok
+              ? 'Se o e-mail estiver cadastrado, enviamos as instruções para $email.'
+              : _auth.erro!,
         ),
-      );
-      Navigator.pop(context);
-    }
+      ),
+    );
+    if (ok) Navigator.pop(context);
   }
 
   @override
@@ -67,7 +73,6 @@ class _EsqueceuViewState extends State<EsqueceuView> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Logotipo (mesmo das telas de login e cadastro)
                     Image.asset(
                       'assets/images/logo.png',
                       height: 100,

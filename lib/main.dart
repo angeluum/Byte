@@ -1,13 +1,20 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/presets.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:p1_dispositivos_moveis/view/home.dart';
+import 'firebase_options.dart';
 import 'view/login.dart';
 import 'view/cadastro.dart';
 import 'view/esqueceu.dart';
 import 'view/sobre.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   DevicePreview.enable();
   runApp(const MyApp());
   await DevicePreview.maybeController?.applyPreset(DevicePresets.iPhone16);

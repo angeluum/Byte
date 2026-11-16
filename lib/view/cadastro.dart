@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../controller/auth_controller.dart';
+
+final _auth = AuthController();
+
 class CadastroView extends StatefulWidget {
   const CadastroView({super.key});
 
@@ -28,6 +32,7 @@ class _CadastroViewState extends State<CadastroView> {
     _telefoneController.dispose();
     _senhaController.dispose();
     _confirmarSenhaController.dispose();
+    _auth.dispose();
     super.dispose();
   }
 
@@ -79,9 +84,20 @@ class _CadastroViewState extends State<CadastroView> {
     return null;
   }
 
-  void _cadastrar() {
-    if (_formKey.currentState!.validate()) {
+  Future<void> _cadastrar() async {
+    if (!_formKey.currentState!.validate()) return;
+    final ok = await _auth.cadastrar(
+      nome: _nomeController.text.trim(),
+      email: _emailController.text.trim(),
+      telefone: _telefoneController.text,
+      senha: _senhaController.text,
+    );
+    if (!mounted) return;
+    if (ok) {
       Navigator.pushNamedAndRemoveUntil(context, '/home', (rota) => false);
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(_auth.erro!)));
     }
   }
 

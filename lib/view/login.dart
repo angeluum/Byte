@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../controller/auth_controller.dart';
+
+final _auth = AuthController();
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -19,6 +23,7 @@ class _LoginViewState extends State<LoginView> {
   void dispose() {
     _emailController.dispose();
     _senhaController.dispose();
+    _auth.dispose();
     super.dispose();
   }
 
@@ -39,9 +44,18 @@ class _LoginViewState extends State<LoginView> {
     return null;
   }
 
-  void _entrar() {
-    if (_formKey.currentState!.validate()) {
+  Future<void> _entrar() async {
+    if (!_formKey.currentState!.validate()) return;
+    final ok = await _auth.entrar(
+      _emailController.text.trim(),
+      _senhaController.text,
+    );
+    if (!mounted) return;
+    if (ok) {
       Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(_auth.erro!)));
     }
   }
 
@@ -138,14 +152,24 @@ class _LoginViewState extends State<LoginView> {
                     const SizedBox(height: 8),
 
                     // Botão Entrar
-                    FilledButton(
-                      onPressed: _entrar,
-                      style: FilledButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                    ListenableBuilder(
+                      listenable: _auth,
+                      builder: (_, __) => FilledButton(
+                        onPressed: _auth.carregando ? null : _entrar,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        ),
+                        child: _auth.carregando
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Text('Entrar'),
                       ),
-                      child: const Text('Entrar'),
                     ),
-                    const SizedBox(height: 16),
 
                     // Cadastro
                     Row(

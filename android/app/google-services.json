@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "159107858682",
+    "project_id": "byte-ce86e",
+    "storage_bucket": "byte-ce86e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159107858682:android:62a368fa85ec4ba4b04943",
+        "android_client_info": {
+          "package_name": "com.example.p1_dispositivos_moveis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOHYFNZH5ziCRyDpfLlbsRcatAeYqli3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
