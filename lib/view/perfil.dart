@@ -149,7 +149,7 @@ class _PerfilViewState extends State<PerfilView> {
                     ),
                     const SizedBox(height: 12),
 
-                    // Cancelar edições
+                    // Cancelar ediçõesf
                     OutlinedButton(
                       onPressed: _cancelar,
                       style: OutlinedButton.styleFrom(

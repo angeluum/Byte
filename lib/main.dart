@@ -10,12 +10,12 @@ import 'view/esqueceu.dart';
 import 'view/sobre.dart';
 
 Future<void> main() async {
+  DevicePreview.enable(); // 1º: antes de tudo
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  DevicePreview.enable();
   runApp(const MyApp());
   await DevicePreview.maybeController?.applyPreset(DevicePresets.iPhone16);
 }

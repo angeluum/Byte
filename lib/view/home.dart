@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'perfil.dart';
 import 'quero_jogar.dart';
+import 'avaliacoes.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
 
 const List<String> _ultimosLancamentos = [
   'Wolverine',
@@ -52,13 +55,12 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-
     final telas = <Widget>[
       _InicioTab(onVerQueroJogar: () => setState(() => _indice = 1)),
       const QueroJogarView(),
-      const QueroJogarView (), //Não esquecer de alterar!!
+      const AvaliacoesView(),
       const QueroJogarView(), //Não esquecer de alterar!!
-      const  PerfilView(),
+      const PerfilView(),
     ];
 
     return Scaffold(
@@ -81,7 +83,7 @@ class _HomeViewState extends State<HomeView> {
           NavigationDestination(
             icon: Icon(Icons.star_border),
             selectedIcon: Icon(Icons.star),
-            label: 'Notas',
+            label: 'Avaliações',
           ),
           NavigationDestination(
             icon: Icon(Icons.rate_review_outlined),
@@ -99,11 +101,9 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-
 class _InicioTab extends StatelessWidget {
   const _InicioTab({required this.onVerQueroJogar});
 
-  
   final VoidCallback onVerQueroJogar;
 
   @override
@@ -118,37 +118,36 @@ class _InicioTab extends StatelessWidget {
           IconButton(
             tooltip: 'Sair',
             icon: const Icon(Icons.logout),
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context,
-              '/login',
-              (rota) => false,
-            ),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              if (!context.mounted) return;
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/login',
+                (rota) => false,
+              );
+            },
           ),
         ],
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
         children: [
-
           //Grids
           const _TituloSecao('Top 5'),
           const _GradeHorizontal(titulos: _melhoresJogos, comRanking: true),
           const SizedBox(height: 24),
-          
+
           const _TituloSecao('Lançamentos Recentes'),
           const _GradeHorizontal(titulos: _ultimosLancamentos),
           const SizedBox(height: 24),
-          
+
           const _TituloSecao('Próximos Lançamentos'),
           const _GradeHorizontal(titulos: _proximosLancamentos),
           const SizedBox(height: 24),
 
           // Lists
-          _TituloSecao(
-            'Na fila',
-            acao: 'Ver tudo',
-            onAcao: onVerQueroJogar,
-          ),
+          _TituloSecao('Na fila', acao: 'Ver tudo', onAcao: onVerQueroJogar),
           const _ListaJogos(titulos: _proximosParaJogar),
           const SizedBox(height: 24),
 
@@ -181,9 +180,8 @@ class _TituloSecao extends StatelessWidget {
           Expanded(
             child: Text(
               titulo,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: Theme.of(context).textTheme.titleMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           if (acao != null) TextButton(onPressed: onAcao, child: Text(acao!)),
@@ -211,10 +209,8 @@ class _GradeHorizontal extends StatelessWidget {
           mainAxisExtent: 112,
           mainAxisSpacing: 12,
         ),
-        itemBuilder: (context, i) => _CapaJogo(
-          titulo: titulos[i],
-          posicao: comRanking ? i + 1 : null,
-        ),
+        itemBuilder: (context, i) =>
+            _CapaJogo(titulo: titulos[i], posicao: comRanking ? i + 1 : null),
       ),
     );
   }
