@@ -99,7 +99,6 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     const SizedBox(height: 32),
 
-                    // E-mail
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
@@ -113,7 +112,6 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Senha
                     TextFormField(
                       controller: _senhaController,
                       obscureText: _ocultarSenha,
@@ -150,7 +148,6 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     const SizedBox(height: 8),
 
-                    // Botão Entrar
                     ListenableBuilder(
                       listenable: _auth,
                       builder: (_, __) => FilledButton(
@@ -170,7 +167,6 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
 
-                    // Cadastro
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

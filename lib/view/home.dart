@@ -140,7 +140,6 @@ class _InicioTab extends StatelessWidget {
   }
 }
 
-/// Título de uma seção, com um botão de ação opcional à direita.
 class _TituloSecao extends StatelessWidget {
   const _TituloSecao(this.titulo, {this.acao, this.onAcao});
 

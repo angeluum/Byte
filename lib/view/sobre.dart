@@ -39,7 +39,7 @@ class SobreView extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Logotipo (mesmo das outras telas)
+                  
                   Image.asset(
                     'assets/images/logo.png',
                     height: 100,
@@ -59,7 +59,7 @@ class SobreView extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
 
-                  // Objetivo do aplicativo
+                  
                   _SecaoCard(
                     icone: Icons.flag_outlined,
                     titulo: 'Objetivo',
@@ -67,10 +67,8 @@ class SobreView extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // integrante da equipe
                   const SizedBox(height: 16),
 
-                  // Informações adicionais (opcionais no RF004)
                   const _SecaoCard(
                     icone: Icons.school_outlined,
                     titulo: 'Informações acadêmicas',
@@ -89,8 +87,6 @@ class SobreView extends StatelessWidget {
     );
   }
 }
-
-/// Cartão com ícone e título, usado para agrupar cada seção da tela.
 class _SecaoCard extends StatelessWidget {
   const _SecaoCard({
     required this.icone,
@@ -133,7 +129,6 @@ class _SecaoCard extends StatelessWidget {
   }
 }
 
-/// Linha "rótulo: valor" para as informações acadêmicas.
 class _LinhaInfo extends StatelessWidget {
   const _LinhaInfo({required this.rotulo, required this.valor});
 

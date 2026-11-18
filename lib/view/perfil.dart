@@ -17,7 +17,6 @@ class PerfilView extends StatefulWidget {
 class _PerfilViewState extends State<PerfilView> {
   static const int _minCaracteres = 3;
 
-  // Limite de tamanho da foto (o documento do Firestore aceita até 1 MiB).
   static const int _limiteFotoBytes = 700 * 1024;
 
   final _controller = PerfilController();
@@ -44,7 +43,6 @@ class _PerfilViewState extends State<PerfilView> {
     super.dispose();
   }
 
-  /// Lê o nome e a foto do documento do usuário na coleção `usuarios`.
   Future<void> _carregar() async {
     try {
       final dados = await _controller.carregar();
@@ -285,7 +283,6 @@ class _PerfilViewState extends State<PerfilView> {
                 ),
                 const SizedBox(height: 32),
 
-                // Nome
                 TextFormField(
                   controller: _nomeController,
                   enabled: !_salvando,
@@ -330,7 +327,6 @@ class _PerfilViewState extends State<PerfilView> {
                 const Divider(),
                 const SizedBox(height: 8),
 
-                // Sair da conta
                 TextButton.icon(
                   onPressed: _salvando ? null : _sair,
                   icon: const Icon(Icons.logout),

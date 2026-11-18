@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import '../controller/jogos_controller.dart';
 import 'componentes.dart';
 
-/// Lista de jogos avaliados pelo usuário, com nota e crítica.
-/// Coleção do Firestore: `avaliacoes`.
 class AvaliacoesView extends StatefulWidget {
   const AvaliacoesView({super.key});
 
@@ -154,7 +152,6 @@ class _AvaliacoesViewState extends State<AvaliacoesView> {
   }
 }
 
-/// Formulário de inserção (RF003) exibido em um diálogo.
 class _FormAvaliacao extends StatefulWidget {
   const _FormAvaliacao({required this.controller});
 

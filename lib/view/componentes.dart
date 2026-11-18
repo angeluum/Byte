@@ -13,15 +13,10 @@ const List<String> generosJogos = [
   'Outro',
 ];
 
-/// Data de criação de um documento. Enquanto o servidor ainda não confirmou
-/// a gravação, o campo vem nulo e usamos a hora atual para ordenar.
 DateTime dataCriacao(Map<String, dynamic> dados) {
   final valor = dados['criadoEm'];
   return valor is Timestamp ? valor.toDate() : DateTime.now();
 }
-
-/// Mensagem exibida quando a leitura do Firestore falha (RF004),
-/// com botão para o usuário tentar novamente.
 class ErroCarregar extends StatelessWidget {
   const ErroCarregar({super.key, required this.onTentarNovamente});
 

@@ -13,8 +13,6 @@ const List<String> _plataformas = [
 ];
 const List<String> _prioridades = ['Alta', 'Média', 'Baixa'];
 
-/// Funcionalidade 2: lista de jogos que o usuário quer jogar no futuro.
-/// Coleção do Firestore: `quero_jogar`.
 class QueroJogarView extends StatefulWidget {
   const QueroJogarView({super.key});
 
@@ -138,7 +136,6 @@ class _QueroJogarViewState extends State<QueroJogarView> {
   }
 }
 
-/// Formulário de inserção (RF003) exibido em um diálogo.
 class _FormQueroJogar extends StatefulWidget {
   const _FormQueroJogar({required this.controller});
 

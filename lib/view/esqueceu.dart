@@ -96,7 +96,6 @@ class _EsqueceuViewState extends State<EsqueceuView> {
                     ),
                     const SizedBox(height: 32),
 
-                    // E-mail cadastrado
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
@@ -111,7 +110,6 @@ class _EsqueceuViewState extends State<EsqueceuView> {
                     ),
                     const SizedBox(height: 24),
 
-                    // Botão para solicitar a recuperação
                     ListenableBuilder(
                       listenable: _auth,
                       builder: (_, __) => FilledButton(

@@ -56,7 +56,6 @@ class _CadastroViewState extends State<CadastroView> {
     if (valor == null || valor.trim().isEmpty) {
       return 'Informe o número de telefone.';
     }
-    // DDD + número: 10 ou 11 dígitos
     if (valor.length < 10 || valor.length > 11) {
       return 'Informe o telefone com DDD (10 ou 11 dígitos).';
     }
@@ -217,7 +216,6 @@ class _CadastroViewState extends State<CadastroView> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Confirmação de senha
                     TextFormField(
                       controller: _confirmarSenhaController,
                       obscureText: _ocultarConfirmacao,
@@ -245,7 +243,6 @@ class _CadastroViewState extends State<CadastroView> {
                     ),
                     const SizedBox(height: 24),
 
-                    // Botão Cadastrar
                     ListenableBuilder(
                       listenable: _auth,
                       builder: (_, __) => FilledButton(
@@ -266,7 +263,7 @@ class _CadastroViewState extends State<CadastroView> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Voltar ao login
+                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
