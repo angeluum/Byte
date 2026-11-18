@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../controller/auth_controller.dart';
 
-final _auth = AuthController();
-
 class EsqueceuView extends StatefulWidget {
   const EsqueceuView({super.key});
 
@@ -12,6 +10,7 @@ class EsqueceuView extends StatefulWidget {
 }
 
 class _EsqueceuViewState extends State<EsqueceuView> {
+  final _auth = AuthController();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
 
@@ -113,12 +112,24 @@ class _EsqueceuViewState extends State<EsqueceuView> {
                     const SizedBox(height: 24),
 
                     // Botão para solicitar a recuperação
-                    FilledButton(
-                      onPressed: _solicitarRecuperacao,
-                      style: FilledButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                    ListenableBuilder(
+                      listenable: _auth,
+                      builder: (_, __) => FilledButton(
+                        onPressed:
+                            _auth.carregando ? null : _solicitarRecuperacao,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        ),
+                        child: _auth.carregando
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Text('Recuperar senha'),
                       ),
-                      child: const Text('Recuperar senha'),
                     ),
                     const SizedBox(height: 16),
 

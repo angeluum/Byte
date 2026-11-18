@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../controller/auth_controller.dart';
 
-final _auth = AuthController();
-
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -12,6 +10,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final _auth = AuthController();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();

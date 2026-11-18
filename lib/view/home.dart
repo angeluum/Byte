@@ -4,8 +4,6 @@ import 'perfil.dart';
 import 'quero_jogar.dart';
 import 'avaliacoes.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
-
 const List<String> _ultimosLancamentos = [
   'Wolverine',
   'Control: Resonant',
@@ -59,7 +57,6 @@ class _HomeViewState extends State<HomeView> {
       _InicioTab(onVerQueroJogar: () => setState(() => _indice = 1)),
       const QueroJogarView(),
       const AvaliacoesView(),
-      const QueroJogarView(), //Não esquecer de alterar!!
       const PerfilView(),
     ];
 
@@ -86,11 +83,6 @@ class _HomeViewState extends State<HomeView> {
             label: 'Avaliações',
           ),
           NavigationDestination(
-            icon: Icon(Icons.rate_review_outlined),
-            selectedIcon: Icon(Icons.rate_review),
-            label: 'Críticas',
-          ),
-          NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: 'Perfil',
@@ -114,21 +106,6 @@ class _InicioTab extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
-        actions: [
-          IconButton(
-            tooltip: 'Sair',
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              if (!context.mounted) return;
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/login',
-                (rota) => false,
-              );
-            },
-          ),
-        ],
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),

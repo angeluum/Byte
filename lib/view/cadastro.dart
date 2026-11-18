@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../controller/auth_controller.dart';
 
-final _auth = AuthController();
-
 class CadastroView extends StatefulWidget {
   const CadastroView({super.key});
 
@@ -13,6 +11,7 @@ class CadastroView extends StatefulWidget {
 }
 
 class _CadastroViewState extends State<CadastroView> {
+  final _auth = AuthController();
   final _formKey = GlobalKey<FormState>();
   final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
@@ -247,12 +246,23 @@ class _CadastroViewState extends State<CadastroView> {
                     const SizedBox(height: 24),
 
                     // Botão Cadastrar
-                    FilledButton(
-                      onPressed: _cadastrar,
-                      style: FilledButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                    ListenableBuilder(
+                      listenable: _auth,
+                      builder: (_, __) => FilledButton(
+                        onPressed: _auth.carregando ? null : _cadastrar,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        ),
+                        child: _auth.carregando
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Text('Cadastrar'),
                       ),
-                      child: const Text('Cadastrar'),
                     ),
                     const SizedBox(height: 16),
 
